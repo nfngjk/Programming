@@ -1,13 +1,9 @@
 import numpy as np
 
-A = np.array([[1, 1 / 2, 1 / 3, 1 / 4, 1 / 6], 
-             [1 / 2, 1 / 3, 1 / 4, 1 / 5, 1 / 7], 
-             [1 / 3, 1 / 4, 1 / 5, 1 / 6, 1 / 8], 
-             [1 / 4, 1 / 5, 1 / 6, 1 / 7, 1 / 9]])
-
 m = eval(input())
 tolerance = eval(input())
 
+A = np.array(np.random.randint(-10, 10, (m, m + 1)), dtype = float)
 
 A_prime = A.copy()      # original matrix
 
@@ -40,15 +36,3 @@ for j in range(0, m):
         print(np.round(A, 3))
 
         break
-
-if(rank == m):
-
-    x = np.zeros(m)
-
-    for i in range(rank - 1, -1, -1):
-
-        x[i] = A[i][m] - (sum(A[i][i + 1 : m] * x[i + 1 : m])) / A[i][i]
-
-    print(np.round(x, 3))
-
-    print(np.linalg.norm(np.dot(A_prime[ : , : m], x) - A_prime[ : , m]))
