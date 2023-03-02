@@ -4,7 +4,7 @@ m = eval(input())
 n = eval(input())
 tolerance = eval(input())
 
-A = np.array(np.random.randint(-10, 10, (m, n)), dtype = float)
+A = np.array([[-7, -3, 9, -7, -8, 2], [-4, -5, 5, 7, 0, 1], [7, -3, -7, -9, -4, 8], [7, -3, -7, -9, -4, 8]], dtype = float)
 
 original_matrix = A.copy()      # original matrix
 
@@ -34,11 +34,13 @@ for j in range(0, n):
 
         A[i][j : ] = A[i][j : ] - A[rank][j : ] * scalar
 
+        print(np.round(A, 4))
+
     rank = rank + 1
 
     if(rank >= min(m, n)):
 
-        print(np.round(A, 3))
+        print(np.round(A, 4))
 
         break
 
