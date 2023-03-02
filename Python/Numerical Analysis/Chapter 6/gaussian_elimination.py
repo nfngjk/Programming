@@ -23,7 +23,7 @@ for j in range(0, m):
 
         A[[rank, pivot_position]] = A[[pivot_position, rank]]
 
-    for i in range(rank + 1, m):
+    for i in range(rank + 1, m):        # elimination
 
         scalar = A[i][j] / A[rank][j]
 

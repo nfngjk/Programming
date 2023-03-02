@@ -28,7 +28,7 @@ for j in range(0, n):
 
         E[rank] = pivot_position
 
-    for i in range(rank + 1, m):
+    for i in range(rank + 1, m):        # elimination
 
         scalar = A[i][j] / A[rank][j]
 
