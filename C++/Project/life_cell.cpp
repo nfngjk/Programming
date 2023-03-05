@@ -1,8 +1,8 @@
 #include <iostream>
 #include <iomanip>
 
-#define max_Row 10
-#define max_Column 25
+#define max_Row 100
+#define max_Column 100
 
 bool dead = 0;
 bool alive = 1;
@@ -30,11 +30,11 @@ void init() {
     std::cout << "Game of life" << std::endl;
     std::cout << "Enter (x, y), where (x, y) is a living cell" << std::endl;
     std::cout << "0 <= x <= " << max_Row - 1 << ", 0 <= y <= " << max_Column - 1 << std::endl;
-    std::cout << "Terminate with (x, y) = (-1, -1)\n";
+    std::cout << "Terminate with (x, y) = (-1, -1)";
 
     while(Row != -1 || Column != -1) {
 
-        std::cout << "Please enter the coordinate: ";
+        std::cout << "\n" << "Please enter the coordinate: ";
 
         std::cin >> Row;
         std::cin >> Column;
