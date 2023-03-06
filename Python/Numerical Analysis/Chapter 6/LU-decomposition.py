@@ -32,7 +32,8 @@ for j in range(0, n):
 
         scalar = A[i][j] / A[rank][j]
 
-        A[i][j : ] = A[i][j : ] - A[rank][j : ] * scalar
+        A[i][j + 1 : ] = A[i][j + 1 : ] - A[rank][j + 1 : ] * scalar
+        A[i][rank] = scalar
 
         print(np.round(A, 4))
 
@@ -45,9 +46,27 @@ for j in range(0, n):
         break
 
 P = np.array([i for i in range(m)])
+L = np.identity(m)
+
+for j in range(0, rank):
+
+    L[j + 1 : , j] = A[j + 1 : , j]
+
+    A[j + 1 : , j] = 0
+
+print(np.round(L, 3))
+print(np.round(np.dot(L, A), 3))
 
 for i in range(min(m, n)):
 
     P[[i, E[i]]] = P[[E[i], i]]
 
 print(P)
+
+P_dot_A = np.copy(original_matrix)
+
+for i in range(len(E)):
+
+    P_dot_A[[i, E[i]]] = P_dot_A[[E[i], i]]
+
+print(np.linalg.norm(P_dot_A - np.dot(L, A)))
