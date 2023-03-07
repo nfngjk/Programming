@@ -2,7 +2,7 @@
 #include <cstdlib>
 #include <ctime>
 
-#define max_size 10
+#define max_size 52
 
 using namespace std;
 
@@ -10,15 +10,12 @@ class Stack {
 
     private:
 
-        // declare the object
         int stack[max_size];
         int top;
 
     public:
 
-        // declare the constructor and the member function in the class Stack
         Stack();
-
         void push(int value);
         int pop();
         void output();
@@ -27,37 +24,33 @@ class Stack {
 
 Stack::Stack() {
 
-    // initialize the element in the stack
     top = -1;
 
 }
 
 void Stack::push(int value) {
 
-    // check if the stack is full
-    if(top > max_size - 1) {
+    if(top >= max_size - 1) {
 
-        cout << "Stack is full" << endl;
-
+        cout << "the stack is full" << endl;
         exit(-1);
 
     }
 
     top++;
 
-    // update the stack
     stack[top] = value;
-    
+
 }
 
 int Stack::pop() {
 
     int temp;
 
-    // check if the stack is empty
     if(top < 0) {
 
-        cout << "Stack is empty" << endl;
+        cout << "the stack is empty" << endl;
+        return -1;
 
     }
 
@@ -73,8 +66,7 @@ void Stack::output() {
 
     for(int i = top; i >= 0; i--) {
 
-        // output the element in stack
-        cout << "[ " << stack[i] << " ]" << endl;
+        cout << stack[i] << endl;
 
     }
 
@@ -83,16 +75,24 @@ void Stack::output() {
 int main() {
 
     int number_of_data = 5;
-    Stack stack;
+
+    Stack shuffle, deal;
 
     srand(time(NULL));
 
+    for(int i = 0; i < max_size; i++) {
+
+        shuffle.push(rand() % 13 + 1);
+
+    } 
+
     for(int i = 0; i < number_of_data; i++) {
 
-        // add the number into stack randomly
-        stack.push(rand() % 13 + 1);
+        deal.push(shuffle.pop());
 
     }
+
+    deal.output();
 
     return 0;
 
