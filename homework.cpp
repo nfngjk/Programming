@@ -2,7 +2,8 @@
 #include <cstdlib>
 #include <ctime>
 
-#define max_size 10
+// define the stack size
+#define max_size 52
 
 using namespace std;
 
@@ -11,7 +12,8 @@ class Stack {
     private:
 
         // declare the object
-        int stack[max_size];
+        int number_of_data = 5;
+        int stack1[max_size], stack2[number_of_data];
         int top;
 
     public:
@@ -27,7 +29,7 @@ class Stack {
 
 Stack::Stack() {
 
-    // initialize the element in the stack
+    // initialize the elements in the stack
     top = -1;
 
 }
@@ -46,7 +48,7 @@ void Stack::push(int value) {
     top++;
 
     // update the stack
-    stack[top] = value;
+    stack1[top] = value;
     
 }
 
@@ -59,9 +61,11 @@ int Stack::pop() {
 
         cout << "Stack is empty" << endl;
 
+        return -1;
+
     }
 
-    temp = stack[top];
+    temp = stack1[top];
 
     top--;
 
@@ -74,7 +78,7 @@ void Stack::output() {
     for(int i = top; i >= 0; i--) {
 
         // output the element in stack
-        cout << "[ " << stack[i] << " ]" << endl;
+        cout << "[ " << stack2[i] << " ]" << endl;
 
     }
 
@@ -87,12 +91,19 @@ int main() {
 
     srand(time(NULL));
 
-    for(int i = 0; i < number_of_data; i++) {
+    for(int i = 0; i < max_size; i++) {
 
         // add the number into stack randomly
         stack.push(rand() % 13 + 1);
 
     }
+
+    for(int i = 0; i < number_of_data; i++) {
+
+
+    }
+
+    stack.output();
 
     return 0;
 
