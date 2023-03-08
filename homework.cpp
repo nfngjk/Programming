@@ -15,6 +15,10 @@ class Stack {
 
     public:
 
+<<<<<<< HEAD
+=======
+        // introduce the member function
+>>>>>>> 54e12c0704221ab7297c955ffb7d729f14468dee
         Stack();
         void push(int value);
         int pop();
@@ -24,12 +28,20 @@ class Stack {
 
 Stack::Stack() {
 
+<<<<<<< HEAD
+=======
+    // initialize the stack
+>>>>>>> 54e12c0704221ab7297c955ffb7d729f14468dee
     top = -1;
 
 }
 
 void Stack::push(int value) {
 
+<<<<<<< HEAD
+=======
+    // check if the stack is full
+>>>>>>> 54e12c0704221ab7297c955ffb7d729f14468dee
     if(top >= max_size - 1) {
 
         cout << "the stack is full" << endl;
@@ -37,6 +49,7 @@ void Stack::push(int value) {
 
     }
 
+    // update the stack
     top++;
 
     stack[top] = value;
@@ -56,6 +69,7 @@ int Stack::pop() {
 
     temp = stack[top];
 
+    // update the stack
     top--;
 
     return temp;
@@ -64,6 +78,7 @@ int Stack::pop() {
 
 void Stack::output() {
 
+    // output the element in the stack
     for(int i = top; i >= 0; i--) {
 
         cout << stack[i] << endl;
@@ -74,6 +89,7 @@ void Stack::output() {
 
 int main() {
 
+    
     int number_of_data = 5;
 
     Stack shuffle, deal;
