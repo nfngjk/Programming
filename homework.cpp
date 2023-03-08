@@ -10,11 +10,13 @@ class Stack {
 
     private:
 
+        // declare the object
         int stack[max_size];
         int top;
 
     public:
 
+        // introduce the member function
         Stack();
         void push(int value);
         int pop();
@@ -24,12 +26,14 @@ class Stack {
 
 Stack::Stack() {
 
+    // initialize the stack
     top = -1;
 
 }
 
 void Stack::push(int value) {
 
+    // check if the stack is full
     if(top >= max_size - 1) {
 
         cout << "the stack is full" << endl;
@@ -37,6 +41,7 @@ void Stack::push(int value) {
 
     }
 
+    // update the stack
     top++;
 
     stack[top] = value;
@@ -47,6 +52,7 @@ int Stack::pop() {
 
     int temp;
 
+    // check if the stack is empty
     if(top < 0) {
 
         cout << "the stack is empty" << endl;
@@ -56,6 +62,7 @@ int Stack::pop() {
 
     temp = stack[top];
 
+    // update the stack
     top--;
 
     return temp;
@@ -64,6 +71,7 @@ int Stack::pop() {
 
 void Stack::output() {
 
+    // output the element in the stack
     for(int i = top; i >= 0; i--) {
 
         cout << stack[i] << endl;
@@ -74,6 +82,7 @@ void Stack::output() {
 
 int main() {
 
+    
     int number_of_data = 5;
 
     Stack shuffle, deal;
