@@ -32,8 +32,8 @@ for j in range(0, n):
 
         scalar = A[i][j] / A[rank][j]
 
-        A[i][j + 1 : ] = A[i][j + 1 : ] - A[rank][j + 1 : ] * scalar
-        A[i][rank] = scalar
+        A[i][j : ] = A[i][j : ] - A[rank][j : ] * scalar
+        # A[i][rank] = scalar
 
         print(np.round(A, 4))
 

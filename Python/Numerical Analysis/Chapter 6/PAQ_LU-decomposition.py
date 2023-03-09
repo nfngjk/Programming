@@ -4,7 +4,7 @@ m = eval(input())
 n = eval(input())
 tolerance = eval(input())
 
-A = np.array([[-7, -3, 9, -7, -8, 2], [-4, -5, 5, 7, 0, 1], [7, -3, -7, -9, -4, 8], [7, -3, -7, -9, -4, 8]], dtype = float)
+A = np.array([[7, 5, 7, 7], [-2, -5, -6, -7], [-8, 5, -1, 0], [6, -2, -7, 5], [-8, -8, 8, -8], [3, -5, -3, -9]], dtype = float)
 
 original_matrix = A.copy()      # original matrix
 
@@ -18,7 +18,7 @@ for j in range(0, n):
     pivot_position = rank + np.argmax(abs(A[rank : , j : ]))       # find the pivot position
     p = rank + (pivot_position - rank) // (n - j)
     q = j + (pivot_position - rank) % (n - j)
-    pivot = A[pivot_position][j]
+    pivot = A[p][j]
 
     if(abs(pivot) < tolerance):
 
@@ -26,9 +26,9 @@ for j in range(0, n):
 
     if(pivot_position > rank):      #swap rows
 
-        A[[rank, pivot_position]] = A[[pivot_position, rank]]
+        A[[rank, p]] = A[[p, rank]]
 
-        E[rank] = pivot_position
+        E[rank] = p
 
     if(q > j):      # swap columns
 
@@ -41,7 +41,7 @@ for j in range(0, n):
         scalar = A[i][j] / A[rank][j]
 
         A[i][j + 1 : ] = A[i][j + 1 : ] - A[rank][j + 1 : ] * scalar
-        A[i][rank] = scalar
+        # A[i][rank] = scalar
 
         print(np.round(A, 4))
 
@@ -53,9 +53,9 @@ for j in range(0, n):
 
         break
 
-P = np.array([i for i in range(0, m)])
+P = np.identity(m)
 L = np.identity(m)
-Q = np.array([i for i in range(0, n)])
+Q = np.identity(n)
 
 for j in range(0, rank):
 
@@ -70,7 +70,12 @@ for i in range(min(m, n)):
 
     P[[i, E[i]]] = P[[E[i], i]]
 
+for i in range(0, min(m, n)):
+
+    Q[[i, F[i]]] = Q[[F[i], i]]
+
 print(P)
+print(Q)
 
 P_dot_A_dot_Q = np.copy(original_matrix)
 
