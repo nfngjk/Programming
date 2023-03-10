@@ -6,34 +6,39 @@ tolerance = eval(input())
 
 A = np.array([[-7, -3, 9, -7, -8, 2], [-4, -5, 5, 7, 0, 1], [7, -3, -7, -9, -4, 8], [7, -3, -7, -9, -4, 8]], dtype = float)
 
-original_matrix = A.copy()      # original matrix
+original_matrix = A.copy()
 
-E = [i for i in range(0, min(m, n))]        # matrix representation
+# matrix represention
+E = [i for i in range(min(m, n))]
 
 rank = 0
 
 for j in range(0, n):
 
-    pivot_position = rank + np.argmax(abs(A[rank : , j]))      # find the pivot position
+    # find the pivot position
+    pivot_posittion = rank + np.argmax(abs(A[rank : , j]))
 
-    pivot = A[pivot_position][j]
+    pivot = A[pivot_posittion][j]
 
     if(abs(pivot) < tolerance):
 
-        break
+        break;
 
-    if(pivot_position > rank):      #swap rows
+    # swap rows
+    if(pivot_posittion > rank):
 
-        A[[rank, pivot_position]] = A[[pivot_position, rank]]
+        A[[rank, pivot_posittion]] = A[[pivot_posittion, rank]]
 
-        E[rank] = pivot_position
+        E[rank] = pivot_posittion
 
-    for i in range(rank + 1, m):        # elimination
+    # elimination
+    for i in range(rank + 1, m):
 
         scalar = A[i][j] / A[rank][j]
 
         A[i][j : ] = A[i][j : ] - A[rank][j : ] * scalar
-        # A[i][rank] = scalar
+
+        A[i][rank] = scalar
 
         print(np.round(A, 4))
 
@@ -41,26 +46,36 @@ for j in range(0, n):
 
     if(rank >= min(m, n)):
 
-        print(np.round(A, 4))
+        # the process of calculation
+        print(np.round(A, 3))
 
         break
 
+U = np.zeros((m, n), dtype = float)
 P = np.identity(m)
 L = np.identity(m)
 
-for j in range(0, rank):
+for i in range(0, m):
 
-    L[j + 1 : , j] = A[j + 1 : , j]
+    for j in range(i, n):
 
-    A[j + 1 : , j] = 0
+        U[i][j] = A[i][j]
 
-print(np.round(L, 3))
+print("U = \n", np.round(U, 3))
+
+for i in range(0, rank):
+
+    L[i + 1 : , i] = A[i + 1 : , i]
+
+    A[i + 1 : , i] = 0
+
+print("L = \n", np.round(L, 3))
 
 for i in range(min(m, n)):
 
-    P[[i, E[i]]] = P[[E[i], i]]
+    P[[i, E[i]]] = P[[E[i] , i]]
 
-print(P)
+print("P = \n", P)
 
 P_dot_A = np.copy(original_matrix)
 

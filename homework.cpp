@@ -15,10 +15,7 @@ class Stack {
 
     public:
 
-<<<<<<< HEAD
-=======
         // introduce the member function
->>>>>>> 54e12c0704221ab7297c955ffb7d729f14468dee
         Stack();
         void push(int value);
         int pop();
@@ -28,20 +25,14 @@ class Stack {
 
 Stack::Stack() {
 
-<<<<<<< HEAD
-=======
     // initialize the stack
->>>>>>> 54e12c0704221ab7297c955ffb7d729f14468dee
     top = -1;
 
 }
 
 void Stack::push(int value) {
 
-<<<<<<< HEAD
-=======
     // check if the stack is full
->>>>>>> 54e12c0704221ab7297c955ffb7d729f14468dee
     if(top >= max_size - 1) {
 
         cout << "the stack is full" << endl;
