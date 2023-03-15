@@ -1,6 +1,8 @@
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
+#include <cstring>
+#include <iomanip>
 
 #define max_size 52
 
@@ -10,6 +12,7 @@ class Stack {
 
     private:
 
+        // declare the object
         int stack[max_size];
         int top;
 
@@ -19,7 +22,7 @@ class Stack {
         Stack();
         void push(int value);
         int pop();
-        void output();
+        string output();
 
 };
 
@@ -36,6 +39,7 @@ void Stack::push(int value) {
     if(top >= max_size - 1) {
 
         cout << "the stack is full" << endl;
+
         exit(-1);
 
     }
@@ -51,9 +55,11 @@ int Stack::pop() {
 
     int temp;
 
+    // check if the stack is empty
     if(top < 0) {
 
         cout << "the stack is empty" << endl;
+
         return -1;
 
     }
@@ -67,7 +73,7 @@ int Stack::pop() {
 
 }
 
-void Stack::output() {
+string Stack::output() {
 
     // output the element in the stack
     for(int i = top; i >= 0; i--) {
