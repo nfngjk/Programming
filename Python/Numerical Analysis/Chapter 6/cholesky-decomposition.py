@@ -1,6 +1,6 @@
 import numpy as np
 
-n = eval(input())
+n = eval(input())       # the dimension of the matrix
 
 matrix = np.array(np.random.randint(-10, 10, (n, n)), dtype = float)
 A_lower = np.zeros((n, n))
@@ -35,5 +35,5 @@ for j in range(0, n):
 
         break
 
-print(np.round(matrix, 3))
+print(np.round(matrix, 3))      # the lower matrix be decomposite of A
 print(np.round(np.linalg.norm(A - np.dot(matrix, matrix.T))))

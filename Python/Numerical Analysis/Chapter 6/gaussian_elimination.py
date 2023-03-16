@@ -7,13 +7,15 @@ A = np.array([[3, 3, -3, 2, -4], [-9, 3, 6, -4, -6], [3, 7, -9, 6, -5], [2, -9, 
 
 original_A = A.copy()      # original matrix
 
+print(original_A)
+
 rank = 0
 
 for j in range(0, m):
 
     pivot_position = rank + np.argmax(abs(A[rank : , j]))      # find the pivot position
 
-    pivot = A[pivot_position][j]
+    pivot = A[pivot_position][j]        # the value of pivot
 
     if(abs(pivot) < tolerance):
 
@@ -35,7 +37,7 @@ for j in range(0, m):
 
     if(rank >= m):
 
-        print(np.round(A, 4))
+        # print(np.round(A, 4))
 
         break
 
@@ -45,8 +47,7 @@ if(rank == m):
 
     for i in range(rank - 1, -1, -1):
 
-        x[i] = A[i][m] - (sum(A[i][i + 1 : m] * x[i + 1 : m])) / A[i][i]        # solve Ax = b
+        x[i] = (A[i][m] - sum(A[i][i + 1 : m] * x[i + 1 : m])) / A[i][i]        # solve Ax = b
 
     print(np.round(x, 4))
-
     print(np.linalg.norm(np.dot(original_A[ : , : m], x) - original_A[ : , m]))
