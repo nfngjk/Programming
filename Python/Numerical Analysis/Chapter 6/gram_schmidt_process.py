@@ -4,7 +4,7 @@ m = eval(input())
 n = eval(input())
 tolerance = eval(input())
 
-matrix1 = np.array(np.random.randint(-10, 10, (m, n)), dtype = float)
+matrix1 = np.array([[3, 3, 6, 6, 3, 8, 3], [4, 2, 6, 6, 6 ,6, 4], [5, 1, 6, 0, 9, 0, 1], [-2, 2, 0, 3, -6, 0, 1], [0, -3, -3, -6, 3, -9, -3]], dtype = float)
 matrix2 = np.zeros((min(m, n), min(m, n)))
 
 rank = 0
